@@ -2,8 +2,8 @@ using Plots
 gr(size=(800,400))
 
 include("Spline quadratica 1 valores.jl")
-include("Funcoes a usar.jl")
 
+z2(x) = sin(2cos(2sin(2cos(2sin(2cos(2sin(x)))))))
 x1 = range(-π/2,π/2;length=41)
 y1 = z2.(x1)
 
@@ -30,7 +30,4 @@ plot!(x2,erro;c=:red,lab="Erro")
 plot!(x2,S;c=:blue,lab="Spline")
 plot!(x2,y2;c=:green,lab="f")
 scatter!(x1,y1;c=:black,lab="(xᵢ,f(xᵢ))")
-xticks!(x1,["x₀","x₁","...","","","","","","","","","","","","","","","","","...","x₂₀","...","","","","","","","","","","","","","","","","","...","x₃₉","x₄₀"])
 title!("Erro Spline Quadrática 1")
-
-png("Erro Quadrática 1")
