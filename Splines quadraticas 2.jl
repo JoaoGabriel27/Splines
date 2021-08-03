@@ -32,5 +32,5 @@ function Spline_quadratica3(x,y)
         end
     end
     scatter!(x, a, c=:lightgray, aspect_ratio=:equal,leg=false)
-    savefig("Splines quadraticas 3.png")
+    savefig("Splines quadraticas 2.png")
 end
