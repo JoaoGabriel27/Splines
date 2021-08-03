@@ -30,40 +30,16 @@ function Splines_cubicas_naturais(x,y)
     end
     #plot
     #Sj(x) = aj + bj(x - xj) + cj(x - xj)^2 + dj(x - xj)^3
-    uu = []
-    uf = []
-    plot(legend=:bottomright)
     for i = 1:n
         f(o) = a[i] + b[i]*(o - x[i]) + c[i]*(o - x[i])^2 + d[i]*(o - x[i])^3
         s = range(x[i],x[i+1]; length=100)
         if i == 1
-            plot!(f,s, c=:black,lab="S(x)")
+            plot(f,s, c=:black,leg=false)
         else
-            plot!(f,s, c=:black, lab="")
-        end
-        u = s[25:25:75]
-        push!(uu,x[i])
-        push!(uu,u[1])
-        push!(uu,u[2])
-        push!(uu,u[3])
-        push!(uf,f(x[i]))
-        push!(uf,f(u[1]))
-        push!(uf,f(u[2]))
-        push!(uf,f(u[3]))
-        if i == n
-            push!(uu,x[i+1])
-            push!(uf,f(x[i+1]))
-        end
-        if i == 1
-            scatter!(u,f.(u), c=:yellow,lab="Possíveis pixels pós resize")
-        else
-            scatter!(u,f.(u), c=:yellow,lab="")
+            plot!(f,s, c=:black,leg=false)
         end
     end
-    scatter!(x, a, c=:black,lab="Pixels")
-    ylabel!("Valores de cor")
-    ylims!(0.15,0.9)
-    savefig("Exeplo de aplicacao.png")
-    return uu, uf
+    scatter!(x, a, c=:lightgray, aspect_ratio=:equal,leg=false)
+    savefig("Splines cubicas naturais.png")
 end
 
